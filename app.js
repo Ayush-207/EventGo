@@ -129,7 +129,7 @@ app.get('/logout', (req, res) => {
     req.logout(function (err) {
         if (err) { return next(err) };
         req.flash('success', "Goodbye!");
-        res.redirect('/home');
+        res.redirect('/profile');
     });
 })
 
@@ -145,7 +145,7 @@ app.post('/register', async (req, res) => {
         const registeredUser = await User.register(user, password);
         req.login(registeredUser, err => {
             if (err) return next(err);
-            res.redirect('/home');
+            res.redirect('/profile');
         })
     } catch (e) {
         res.redirect('register');
